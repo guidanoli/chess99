@@ -3,7 +3,14 @@
 #include "test_manager.h"
 #include "fdiff.h"
 
-int test_print(Piece* p, const char* expected)
+typedef struct
+{
+	Piece p;
+	const char* expected;
+}
+test_print_case;
+
+int test_print(test_print_case* test_case)
 {
 	FILE* fp1 = fopen("expected", "r+");
 	FILE* fp2 = fopen("obtained", "r+");
@@ -11,8 +18,8 @@ int test_print(Piece* p, const char* expected)
 	if (!fp1 || !fp2)
 		return -1;
 
-	printPiece(p, fp1);
-	fprintf(fp2, "%s", expected);
+	printPiece(&(test_case->p), fp1);
+	fprintf(fp2, "%s", test_case->expected);
 	
 	rewind(fp1);
 	rewind(fp2);
@@ -24,13 +31,6 @@ int test_print(Piece* p, const char* expected)
 
 	return different;
 }
-
-typedef struct
-{
-	Piece p;
-	const char* expected;
-}
-test_print_case;
 
 test_print_case test_print_cases[] = {
 	{ { PTID_ROOK, COLOUR_BLACK }, "R"},
@@ -44,9 +44,7 @@ void run_print_piece_tests()
 	push_name("PieceTest");
 	size_t n = sizeof(test_print_cases)/sizeof(test_print_cases[0]);
 	for (size_t i = 0; i < n; ++i) {
-		Piece* p = &(test_print_cases[i].p);
-		const char* expected = test_print_cases[i].expected;
-		int different = test_print(p, expected);
+		int different = test_print(&(test_print_cases[i]));
 		if (different) {
 			test_failed();	
 		} else {
