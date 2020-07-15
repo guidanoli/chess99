@@ -1,3 +1,10 @@
+# Linux temporary files
+*~
+*.swp
+
+# Build folder
+build/
+
 # Prerequisites
 *.d
 
