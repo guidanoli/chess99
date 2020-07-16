@@ -53,6 +53,8 @@ void run_board_tests()
 
 	Board *b = Board_new();
 
+	assert(Board_check(b));
+
 	board_test_print_case test_case = {b, expected_full_board};
 	assert(!board_test_print(&test_case));
 	assert(Board_at(b, SQ_A1)->type_id == PTID_ROOK);

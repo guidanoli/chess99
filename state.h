@@ -1,6 +1,8 @@
 #ifndef STATE_H
 #define STATE_H
 
+#include <stdio.h>
+
 #include "types.h"
 #include "board.h"
 
@@ -8,6 +10,9 @@
 #define EN_PASSANT_NONE SQ_CNT 
 
 typedef struct GameState GameState;
+
+// GameState format version
+extern int GameState_version;
 
 // Create a game state
 GameState* GameState_new();
@@ -42,12 +47,22 @@ Square GameState_getEnPassant(GameState* g);
 // Set en passant square
 void GameState_setEnPassant(GameState* g, Square enpassant);
 
+// Serialize game state
+void GameState_save(GameState* g, FILE* fp);
+
+// Deserialize game state
+GameState* GameState_load(FILE* fp);
+
 // TODO:
-// * Load
-// * Save
 // * Altered squares bitmap
 
 // Delete game state
 void GameState_delete(GameState* g);
+
+// Check if game state is valid
+int GameState_check(GameState* g);
+
+// Check if en passant is valid
+int checkEnPassant(Square enpassant);
 
 #endif

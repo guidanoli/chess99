@@ -85,7 +85,7 @@ Rank getSquareRank(Square sq);
 File getSquareFile(Square sq);
 
 // Get square in a given rank and file
-Square getSquare(Rank r, File f);
+Square getSquare(File f, Rank r);
 
 // Print square to file
 void printSquare(Square sq, FILE* fp);
@@ -95,5 +95,23 @@ void printRank(Rank r, FILE* fp);
 
 // Print file to file
 void printFile(File f, FILE* fp);
+
+// Check if square is valid
+int checkSquare(Square sq);
+
+// Check if rank is valid
+int checkRank(Rank r);
+
+// Check if file is valid
+int checkFile(File f);
+
+// Check if piece type id is valid
+int checkPieceTypeId(PieceTypeId ptid);
+
+// Check if colour is valid
+int checkColour(Colour c);
+
+// Check if phase is valid
+int checkPhase(Phase ph);
 
 #endif

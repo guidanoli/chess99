@@ -12,7 +12,7 @@ File getSquareFile(Square sq)
 	return sq & 7;
 }
 
-Square getSquare(Rank r, File f)
+Square getSquare(File f, Rank r)
 {
 	return (r << 3) | f;	
 }
@@ -33,3 +33,32 @@ void printFile(File f, FILE* fp)
 	putc(f - FL_A + 'a', fp); 
 }
 
+int checkSquare(Square sq)
+{
+	return sq >= SQ_A1 && sq < SQ_CNT;
+}
+
+int checkRank(Rank r)
+{
+	return r >= RK_1 && r < RK_CNT;
+}
+
+int checkFile(File f)
+{
+	return f >= FL_A && f < FL_CNT;
+}
+
+int checkPieceTypeId(PieceTypeId ptid)
+{
+	return ptid >= PTID_EMPTY && ptid < PTID_CNT;
+}
+
+int checkColour(Colour c)
+{
+	return c == COLOUR_WHITE || c == COLOUR_BLACK;
+}
+
+int checkPhase(Phase ph)
+{
+	return ph >= PHASE_RUNNING && ph < PHASE_CNT;
+}

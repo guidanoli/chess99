@@ -10,4 +10,7 @@ void run_board_tests();
 // Test the GameState C class
 void run_game_state_tests();
 
+// Test types
+void run_type_tests();
+
 #endif

@@ -9,6 +9,7 @@ void run_game_state_tests()
 	GameState* g = GameState_new();
 
 	// Check initial state
+	assert(GameState_check(g));
 	assert(GameState_getTurn(g) == COLOUR_WHITE);
 	assert(GameState_getPhase(g) == PHASE_RUNNING);
 	assert(GameState_getEnPassant(g) == EN_PASSANT_NONE);

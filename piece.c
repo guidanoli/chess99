@@ -32,3 +32,9 @@ void printPiece(Piece* p, FILE* fp)
 print_char:
 	putc(c, fp);
 }
+
+int checkPiece(Piece* p)
+{
+	return checkPieceTypeId(p->type_id) &&
+	       checkColour(p->colour);
+}
