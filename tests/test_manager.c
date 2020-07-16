@@ -63,3 +63,9 @@ void print_results()
 	else
 		printf("%zu from %zu tests failed\n", failed, succeeded + failed);
 }
+
+void run_tests(void(**f_v)(void))
+{
+	for (;*f_v;++f_v)
+		(*f_v)();
+}

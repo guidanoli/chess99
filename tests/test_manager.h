@@ -16,4 +16,19 @@ void push_name(const char* name);
 // Exit last pushed scope
 void pop_name();
 
+// Auxiliary macro for asserting boolean statements
+#ifndef assert
+#define assert(statement) do { \
+	if (statement) \
+		test_succeeded(); \
+	else \
+		test_failed(); \
+} while(0)
+#endif
+
+// Run test array
+// f_v must be an array of functions
+// ending with NULL
+void run_tests(void(**f_v)(void));
+
 #endif

@@ -1,6 +1,7 @@
 # Linux temporary files
 *~
 *.swp
+*.swo
 
 # Build folder
 build/

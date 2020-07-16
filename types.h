@@ -76,18 +76,25 @@ typedef struct
 }
 Piece;
 
+// Get square rank
 Rank getSquareRank(Square sq);
 
+// Get square file
 File getSquareFile(Square sq);
 
+// Get square in a given rank and file
 Square getSquare(Rank r, File f);
 
+// Print square to file
 void printSquare(Square sq, FILE* fp);
 
+// Print rank to file
 void printRank(Rank r, FILE* fp);
 
+// Print file to file
 void printFile(File f, FILE* fp);
 
+// Print piece to file
 void printPiece(Piece* p, FILE* fp);
 
 #endif
