@@ -69,13 +69,6 @@ typedef enum
 }
 Colour;
 
-typedef struct
-{
-	PieceTypeId type_id;
-	Colour colour;
-}
-Piece;
-
 // Get square rank
 Rank getSquareRank(Square sq);
 
@@ -93,8 +86,5 @@ void printRank(Rank r, FILE* fp);
 
 // Print file to file
 void printFile(File f, FILE* fp);
-
-// Print piece to file
-void printPiece(Piece* p, FILE* fp);
 
 #endif

@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 #include "types.h"
+#include "piece.h"
 
 typedef struct Board Board;
 
