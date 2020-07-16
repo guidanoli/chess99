@@ -4,6 +4,7 @@
 void (*tests[])(void) = {
 	run_print_piece_tests,
 	run_board_tests,
+	run_game_state_tests,
 	0,
 };
 

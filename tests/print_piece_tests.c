@@ -1,5 +1,4 @@
 #include "tests.h"
-#include "types.h"
 #include "test_manager.h"
 #include "fdiff.h"
 #include "piece.h"

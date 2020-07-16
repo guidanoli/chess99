@@ -69,6 +69,15 @@ typedef enum
 }
 Colour;
 
+typedef enum
+{
+	PHASE_RUNNING,
+	PHASE_WHITE_WON,
+	PHASE_BLACK_WON,
+	PHASE_CNT = 3
+}
+Phase;
+
 // Get square rank
 Rank getSquareRank(Square sq);
 
