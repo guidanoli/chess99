@@ -4,11 +4,11 @@
 #include <stdio.h>
 
 #include "types.h"
-#include "piece.h"
 
 typedef struct Board Board;
 
 // Create new board
+// In case of error, returns NULL
 Board* Board_new();
 
 // Obtain piece in a given square

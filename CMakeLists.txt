@@ -4,7 +4,6 @@ project(chess99)
 add_library(chess99lib
 	types.c
 	board.c
-	piece.c
 	state.c)
 set_target_properties(chess99lib PROPERTIES
 	LINKER_LANGUAGE C

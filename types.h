@@ -78,6 +78,13 @@ typedef enum
 }
 Phase;
 
+typedef struct
+{
+	PieceTypeId type_id;
+	Colour colour;
+}
+Piece;
+
 // Get square rank
 Rank getSquareRank(Square sq);
 
@@ -113,5 +120,12 @@ int checkColour(Colour c);
 
 // Check if phase is valid
 int checkPhase(Phase ph);
+
+// Print piece to file
+void printPiece(Piece* p, FILE* fp);
+
+// Check if piece is valid
+int checkPiece(Piece* p);
+
 
 #endif

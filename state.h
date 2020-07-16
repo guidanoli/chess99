@@ -15,6 +15,7 @@ typedef struct GameState GameState;
 extern int GameState_version;
 
 // Create a game state
+// In case of error, returns NULL
 GameState* GameState_new();
 
 // Get game board
@@ -51,6 +52,7 @@ void GameState_setEnPassant(GameState* g, Square enpassant);
 void GameState_save(GameState* g, FILE* fp);
 
 // Deserialize game state
+// In case of error, returns NULL
 GameState* GameState_load(FILE* fp);
 
 // TODO:

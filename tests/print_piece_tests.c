@@ -1,7 +1,7 @@
 #include "tests.h"
 #include "test_manager.h"
 #include "fdiff.h"
-#include "piece.h"
+#include "types.h"
 
 typedef struct
 {
