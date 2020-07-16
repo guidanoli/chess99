@@ -13,6 +13,8 @@ struct stack
 size_t succeeded = 0;
 size_t failed = 0;
 struct stack* name_stack = NULL;
+int line = 0;
+const char* file = NULL;
 
 size_t get_test_id()
 {
@@ -32,13 +34,21 @@ void test_succeeded()
 	++succeeded;
 	print_test_name();
 	printf(" succeeded\n");
+	file = NULL;
+	line = 0;
 }
 
 void test_failed()
 {
 	++failed;
 	print_test_name();
-	printf(" failed\n");
+	printf(" failed");
+	if (file && line)
+		printf(" in %s:%d\n", file, line);
+	else
+		printf(" (unknown file and line)\n");
+	file = NULL;
+	line = 0;
 }
 
 void push_name(const char* name)
@@ -68,4 +78,10 @@ void run_tests(void(**f_v)(void))
 {
 	for (;*f_v;++f_v)
 		(*f_v)();
+}
+
+void tell_file_and_line(const char* _file, int _line)
+{
+	file = _file;
+	line = _line;
 }
