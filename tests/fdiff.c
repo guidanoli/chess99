@@ -9,9 +9,5 @@ int fdiff(FILE* fp1, FILE* fp2) {
 		ch2 = getc(fp2);
 	}
 
-	if (ch1 == ch2) {
-		return 0;
-	} else if (ch1 != ch2) {
-		return 1;
-	}
+	return ch1 != ch2;
 }

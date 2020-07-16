@@ -39,6 +39,6 @@ void tell_file_and_line(const char* file, int line);
 // Run test array
 // f_v must be an array of functions
 // ending with NULL
-void run_tests(void(**f_v)(void));
+void run_tests(void(**f_v)());
 
 #endif

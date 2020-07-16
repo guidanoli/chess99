@@ -74,7 +74,7 @@ void print_results()
 		printf("%zu from %zu tests failed\n", failed, succeeded + failed);
 }
 
-void run_tests(void(**f_v)(void))
+void run_tests(void(**f_v)())
 {
 	for (;*f_v;++f_v)
 		(*f_v)();

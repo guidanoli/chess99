@@ -1,7 +1,7 @@
 #include "tests.h"
 #include "test_manager.h"
 
-void (*tests[])(void) = {
+void (*tests[])() = {
 	run_type_tests,
 	run_print_piece_tests,
 	run_board_tests,
