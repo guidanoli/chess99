@@ -89,6 +89,9 @@ void Piece_print(Piece* p, FILE* fp)
 		case PTID_ROOK:
 			c = 'r';
 			break;
+		default:
+			c = '?';
+			goto print_char;
 	}
 	if (p->colour == COLOUR_BLACK)
 		c += 'A' - 'a';
@@ -98,6 +101,7 @@ print_char:
 
 int Piece_check(Piece* p)
 {
-	return checkPieceTypeId(p->type_id) &&
-	       checkColour(p->colour);
+	if (!checkPieceTypeId(p->type_id))
+		return 0;
+	return p->type_id == PTID_EMPTY || checkColour(p->colour);
 }
