@@ -4,7 +4,7 @@
 
 void run_game_state_tests()
 {
-	push_name("GameStateTests");
+	test_manager_push_name("GameStateTests");
 
 	GameState* g = GameState_new();
 
@@ -53,5 +53,5 @@ void run_game_state_tests()
 
 	GameState_delete(g);
 
-	pop_name();
+	test_manager_pop_name();
 }	

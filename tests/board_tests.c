@@ -1,17 +1,17 @@
 #include "board.h"
 #include "tests.h"
 #include "test_manager.h"
-#include "fdiff.h"
+#include "utils.h"
 
 void run_board_tests()
 {
-	push_name("BoardTest");
+	test_manager_push_name("BoardTest");
 
 	Board* b = Board_new();
 
 	assert(Board_check(b));
-	assert(gtdiff((gt_func) Board_print, b, "02.dat"));
-	assert(gtdiff((gt_func) Board_save, b, "03.dat"));
+	assert(utils_gt((utils_gt_func) Board_print, b, "02.dat"));
+	assert(utils_gt((utils_gt_func) Board_save, b, "03.dat"));
 	assert(Board_at(b, SQ_A1)->type_id == PTID_ROOK);
 	assert(Board_at(b, SQ_A2)->type_id == PTID_PAWN);
 	assert(Board_at(b, SQ_A3)->type_id == PTID_EMPTY);
@@ -20,5 +20,5 @@ void run_board_tests()
 
 	Board_delete(b);
 
-	pop_name();
+	test_manager_pop_name();
 }
