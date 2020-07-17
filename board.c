@@ -84,7 +84,7 @@ void Board_print(Board* board, FILE* fp)
 		fprintf(fp, "%d | ", r - RK_1 + 1);
 		for (int f = FL_A; f <= FL_H; ++f) {
 			Square sq = getSquare(f, r);
-			printPiece(Board_at(board, sq), fp);
+			Piece_print(Board_at(board, sq), fp);
 			fprintf(fp, " ");
 		}
 		fprintf(fp, "|\n");
@@ -159,7 +159,7 @@ fail:
 int Board_check(Board* board)
 {
 	for (int sq = SQ_A1; sq < SQ_CNT; ++sq)
-		if (!checkPiece(Board_at(board, sq)))
+		if (!Piece_check(Board_at(board, sq)))
 			return 0;
 	return 1;
 }
