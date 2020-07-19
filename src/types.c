@@ -63,7 +63,7 @@ int checkPhase(Phase ph)
 	return ph >= PHASE_RUNNING && ph < PHASE_CNT;
 }
 
-void Piece_print(Piece* p, FILE* fp)
+void Piece_print(Piece const* p, FILE* fp)
 {
 	char c;
 	switch (p->type_id)
@@ -99,7 +99,7 @@ print_char:
 	putc(c, fp);
 }
 
-int Piece_check(Piece* p)
+int Piece_check(Piece const* p)
 {
 	if (!checkPieceTypeId(p->type_id))
 		return 0;

@@ -2,18 +2,36 @@
 #define EVENT_H
 
 #include "state.h"
+#include "types.h"
 
-typedef struct Event Event;
-typedef int (*Event_isValid_func) (Event*, GameState const*);
-typedef void (*Event_apply_func) (Event*, GameState*);
+// IEvent interface
 
-Event* Event_new(Event_isValid_func isValid,
-		 Event_apply_func apply);
+typedef struct IEvent IEvent;
+typedef int (*Event_isValid_func) (IEvent const*, GameState const*);
+typedef void (*Event_apply_func) (IEvent const*, GameState*);
+typedef void (*Event_delete_traits_func) (void*);
 
-int Event_isValid(Event* event, GameState const* g);
+IEvent* Event_new(Event_isValid_func isValid,
+		  Event_apply_func apply,
+		  Event_delete_traits_func delete_traits,
+		  void* traits);
 
-void Event_apply(Event* event, GameState* g);
+int Event_isValid(IEvent const* event, GameState const* g);
 
-void Event_delete(Event* event);
+void Event_apply(IEvent const* event, GameState* g);
+
+void Event_delete(IEvent* event);
+
+void const* Event_getTraits(IEvent const* event);
+
+// Move implementation of IEvent
+
+typedef struct Move Move;
+
+IEvent* Move_new(Square origin, Square dest);
+
+Square Move_getOrigin(Move const* move);
+
+Square Move_getDestination(Move const* move);
 
 #endif

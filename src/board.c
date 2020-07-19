@@ -71,7 +71,12 @@ Piece* Board_at(Board* board, Square sq)
 	return board->data + sq;
 }
 
-void Board_print(Board* board, FILE* fp)
+Piece const* Board_at_const(Board const* board, Square sq)
+{
+	return board->data + sq;
+}
+
+void Board_print(Board const* board, FILE* fp)
 {
 	fprintf(fp, "    ");
 	for (char fc = 'a'; fc <= 'h'; ++fc)
@@ -84,7 +89,7 @@ void Board_print(Board* board, FILE* fp)
 		fprintf(fp, "%d | ", r - RK_1 + 1);
 		for (int f = FL_A; f <= FL_H; ++f) {
 			Square sq = getSquare(f, r);
-			Piece_print(Board_at(board, sq), fp);
+			Piece_print(Board_at_const(board, sq), fp);
 			fprintf(fp, " ");
 		}
 		fprintf(fp, "|\n");
@@ -101,10 +106,10 @@ void Board_delete(Board* board)
 	free(board);
 }
 
-void Board_save(Board* board, FILE* fp)
+void Board_save(Board const* board, FILE* fp)
 {
 	for (int sq = SQ_A1; sq < SQ_CNT; ++sq) {
-		Piece* p = Board_at(board, sq);
+		Piece const* p = Board_at_const(board, sq);
 		if (p->type_id != PTID_EMPTY) {
 			fprintf(fp, "%d %d %d\n",
 				sq, p->type_id, p->colour);
@@ -156,10 +161,10 @@ fail:
 	return NULL;
 }
 
-int Board_check(Board* board)
+int Board_check(Board const* board)
 {
 	for (int sq = SQ_A1; sq < SQ_CNT; ++sq)
-		if (!Piece_check(Board_at(board, sq)))
+		if (!Piece_check(Board_at_const(board, sq)))
 			return 0;
 	return 1;
 }

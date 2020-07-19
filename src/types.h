@@ -122,10 +122,10 @@ int checkColour(Colour c);
 int checkPhase(Phase ph);
 
 // Print piece to file
-void Piece_print(Piece* p, FILE* fp);
+void Piece_print(Piece const* p, FILE* fp);
 
 // Check if piece is valid
-int Piece_check(Piece* p);
+int Piece_check(Piece const* p);
 
 
 #endif

@@ -35,12 +35,17 @@ Board* GameState_getBoard(GameState* g)
 	return g->board;
 }
 
-Colour GameState_getTurn(GameState* g)
+Board const* GameState_getBoard_const(GameState const* g)
+{
+	return g->board;
+}
+
+Colour GameState_getTurn(GameState const* g)
 {
 	return g->turn;
 }
 
-Phase GameState_getPhase(GameState* g)
+Phase GameState_getPhase(GameState const* g)
 {
 	return g->phase;
 }
@@ -70,6 +75,11 @@ Piece* GameState_getPieceAt(GameState* g, Square sq)
 	return Board_at(g->board, sq);
 }
 
+Piece const* GameState_getPieceAt_const(GameState const* g, Square sq)
+{
+	return Board_at(g->board, sq);
+}
+
 void GameState_clearSquare(GameState* g, Square sq)
 {
 	Board_at(g->board, sq)->type_id = PTID_EMPTY;
@@ -81,7 +91,7 @@ void GameState_delete(GameState* g)
 	free(g);
 }
 
-Square GameState_getEnPassant(GameState* g)
+Square GameState_getEnPassant(GameState const* g)
 {
 	return g->enpassant;
 }
@@ -91,7 +101,7 @@ void GameState_setEnPassant(GameState* g, Square enpassant)
 	g->enpassant = enpassant;
 }
 
-void GameState_save(GameState* g, FILE* fp)
+void GameState_save(GameState const* g, FILE* fp)
 {
 	fprintf(fp, "%d\n", GameState_version);
 	fprintf(fp, "%d %d %d\n", g->turn, g->phase, g->enpassant);
@@ -136,7 +146,7 @@ fail:
 	return NULL;
 }
 
-int GameState_check(GameState* g)
+int GameState_check(GameState const* g)
 {
 	return Board_check(g->board) &&
 	       checkColour(g->turn) &&
