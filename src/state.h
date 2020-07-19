@@ -6,8 +6,6 @@
 #include "types.h"
 #include "board.h"
 
-// TODO: use 'const' qualifier for getters
-
 // Unset EnPassant square constant
 #define EN_PASSANT_NONE SQ_CNT 
 
