@@ -24,4 +24,8 @@ Square Move_getDestination(Move const* move);
 
 void Move_delete(Move* move);
 
+// Piece can apply Move check
+
+int Piece_canApply(Piece const* piece, GameState const* g, Move const* move);
+
 #endif

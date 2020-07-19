@@ -94,6 +94,16 @@ File getSquareFile(Square sq);
 // Get square in a given rank and file
 Square getSquare(File f, Rank r);
 
+// Get direction from origin to destination
+Direction getDirection(Square orig, Square dest);
+
+// Get cardinal direction from orig to destination
+// That is, only those listed in the enumeration
+Direction getCardinalDirection(Square orig, Square dest);
+
+// Get square opposite in rank
+Square flipSquareRank(Square sq);
+
 // Print square to file
 void printSquare(Square sq, FILE* fp);
 

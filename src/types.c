@@ -105,3 +105,37 @@ int Piece_check(Piece const* p)
 		return 0;
 	return p->type_id == PTID_EMPTY || checkColour(p->colour);
 }
+
+Direction getDirection(Square orig, Square dest)
+{
+	return dest - orig;
+}
+
+Square flipSquareRank(Square sq)
+{
+	return getSquare(getSquareFile(sq),
+	                 RK_8 - getSquareRank(sq));
+}
+
+Direction getCardinalDirection(Square orig, Square dest)
+{
+	Rank orig_rank = getSquareRank(orig);
+	File orig_file = getSquareFile(orig);
+
+	Rank dest_rank = getSquareRank(dest);
+	File dest_file = getSquareFile(dest);
+
+	Direction dir = DIR_NONE;
+
+	if (dest_file > orig_file)
+		dir += DIR_EAST;
+	else if (dest_file < orig_file)
+		dir += DIR_WEST;
+
+	if (dest_rank > orig_rank)
+		dir += DIR_NORTH;
+	else if (dest_rank < orig_rank)
+		dir += DIR_SOUTH;
+
+	return dir;
+}
